@@ -54,7 +54,7 @@ def main():
         navigation.navigate_to_marketplace()
         logger.info("Navigated to marketplace.")
 
-        # --- New Dota2 Navigation Flow ---
+        # --- New Rust Navigation Flow ---
         # Close unnecessary elements.
         navigation.close_hide_button()
         navigation.close_live_feed()
@@ -72,27 +72,27 @@ def main():
         logger.info("Clicked the Game Banner Selector.")
         time.sleep(1)
 
-        # Click the Dota2 button.
-        dota2_button = WebDriverWait(browser, 10).until(
+        # Click the Rust button.
+        rust_button = WebDriverWait(browser, 10).until(
             EC.element_to_be_clickable(
-                (By.XPATH, "//a[@href='/ingame-items/item-list/dota2-skins']")
+                (By.XPATH, "//a[@href='/ingame-items/item-list/rust-skins']")
             )
         )
-        navigation.actions.move_to_element(dota2_button).pause(
+        navigation.actions.move_to_element(rust_button).pause(
             random.uniform(0.5, 1.5)
         ).click().perform()
-        logger.info("Clicked the Dota2 button.")
+        logger.info("Clicked the Rust button.")
         time.sleep(1)
 
-        # Confirm navigation to the Dota2 marketplace page.
-        expected_url = "https://dmarket.com/ingame-items/item-list/dota2-skins"
+        # Confirm navigation to the Rust marketplace page.
+        expected_url = "https://dmarket.com/ingame-items/item-list/rust-skins"
         WebDriverWait(browser, 30).until(EC.url_to_be(expected_url))
         logger.info(
-            "Successfully navigated to Dota2 marketplace: %s", browser.current_url
+            "Successfully navigated to Rust marketplace: %s", browser.current_url
         )
 
         # Apply price filter and close filters.
-        navigation.apply_price_filter(min_price=0.5, max_price=2.5)
+        navigation.apply_price_filter(min_price=10.1, max_price=15)
         navigation.close_filters()
         logger.info("Applied price filter and closed filters.")
 
